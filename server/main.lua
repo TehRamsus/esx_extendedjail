@@ -25,7 +25,11 @@ end, true, {help = 'Vangitse pelaaja', validate = true, arguments = {
 
 RegisterNetEvent("esx_extendedjail:jailplayer_server")
 AddEventHandler( "esx_extendedjail:jailplayer_server", function(playeridss, timess, JailType)
-	JailPlayer(playeridss, timess, { jail = JailType, type = 'first', time = timess})
+    if playeridss ~= -1 then
+        JailPlayer(playeridss, timess, { jail = JailType, type = 'first', time = timess})
+    else
+        DropPlayer(source, "Good try, but its not allowed here.")
+    end
 end)
 
 RegisterNetEvent("esx_extendedjail:unjail_server")
