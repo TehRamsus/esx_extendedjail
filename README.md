@@ -31,9 +31,7 @@ Requirements
 Permissions
 
 ```diff
-- You don't have permissions to edit code. only locales & configs. 
 - You don't have permissions to release script again, or leak it. 
-- If you use this script, you need to mention me!
 ```
 
 **• Owner: TehRamsus**
