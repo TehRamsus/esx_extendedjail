@@ -257,13 +257,3 @@ ESX.RegisterServerCallback('esx_extendedjail:players', function(source, cb)
 			cb(players, false)
 		end
 end)
-
-Citizen.CreateThread(function()
-	Citizen.Wait(1000)
-	if GetCurrentResourceName() == 'esx_extendedjail' then
-		print("^4[Extended Jail]: ^2Started Successful, enjoy!^0")
-	else
-		print("^4[Extended Jail]: ^1Error, This may cause, because you changed script name. Please change script name back to 'esx_extendedjail'^0")
-		while true do end
-	end
-end)
