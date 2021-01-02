@@ -2,7 +2,7 @@ fx_version 'adamant'
 game 'gta5'
 
 description 'Extended jail - Ramsus'
-version '1.0.0'
+version '1.0.1'
 
 server_scripts {
 	'@mysql-async/lib/MySQL.lua',
