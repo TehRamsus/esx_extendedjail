@@ -57,7 +57,7 @@ Config.Wear = {
 --[[
 
 	If you want put this to the police job, check this function: OpenpoliceActionsMenu
-		Added all functions bottom after that OpenpoliceActionsMenu function. If you don't know how, check example how handcuffs is made...
+		Added all functions below after that OpenpoliceActionsMenu function. If you don't know how, check example how handcuffs is made...
 
 	{label = ('Jail'),            value = 'jail_menu'}
 
