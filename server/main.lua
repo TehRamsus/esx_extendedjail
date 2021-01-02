@@ -102,7 +102,7 @@ function JailPlayer(playerId, time, data, source)
 			(ESX.GetPlayerFromId(source.playerId)).showNotification(_U('already_jailed_error'))
 		end
 	else
-		xPlayerSource.triggerEvent('chatMessage', "[ JAIL ]" , {255, 255, 255}, _U('no_permissions'))
+		(ESX.GetPlayerFromId(source.playerId)).triggerEvent('chatMessage', "[ JAIL ]" , {255, 255, 255}, _U('no_permissions'))
 		if Config.IsWebhookEnabled then Webhook("2061822", _U('alert'), _U('tried_without_permission', GetPlayerName(playerId), xPlayerTarget.getIdentifier())) end
 	end
 
@@ -202,6 +202,7 @@ end)
 
 MySQL.ready(function()
 	Citizen.Wait(5000)
+	print("^0[^4Extended Jail^0] ^2Started Successful, enjoy! If you found any bugs, please report it on forum or github.^0")
 	local xPlayers = ESX.GetPlayers()
 
 	for i=1, #xPlayers, 1 do
@@ -256,14 +257,4 @@ ESX.RegisterServerCallback('esx_extendedjail:players', function(source, cb)
 		else
 			cb(players, false)
 		end
-end)
-
-Citizen.CreateThread(function()
-	Citizen.Wait(1000)
-	if GetCurrentResourceName() == 'esx_extendedjail' then
-		print("^4[Extended Jail]: ^2Started Successful, enjoy!^0")
-	else
-		print("^4[Extended Jail]: ^1Error, This may cause, because you changed script name. Please change script name back to 'esx_extendedjail'^0")
-		while true do end
-	end
 end)
