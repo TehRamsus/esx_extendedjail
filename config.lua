@@ -79,3 +79,4 @@ Config.Wear = {
 		menu.close()
 	end)
 end
+--]]
