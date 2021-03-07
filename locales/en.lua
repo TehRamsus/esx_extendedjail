@@ -25,5 +25,7 @@ Locales ['en'] = {
   ['tried_unjail_error'] = 'You can`t release person who is not in jail.',
   ['already_jailed_error'] = 'This person is already jailed.',
   ['already_started_error'] = 'The release is already in progress, or has been attempted recently.',
-  ['failed_hacking_error'] = 'You failed to break into the computer!'
+  ['failed_hacking_error'] = 'You failed to break into the computer!',
+  ['error'] = 'Error. Make sure you used command correctly!',
+  ['error_noplayer'] = 'Error. There is no this player.'
 }

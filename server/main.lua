@@ -3,25 +3,67 @@ local PlayerArrested, PlayersinJail = {}, 0
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-ESX.RegisterCommand('jail', 'admin', function(xPlayer, args, showError)
-	JailPlayer(args.playerId, args.time, { jail = 'prison', type = 'first', time = args.time}, xPlayer)
-end, true, {help = 'Vangitse pelaaja', validate = true, arguments = {
-	{name = 'playerId', help = 'Pelaaja ID', type = 'playerId'},
-	{name = 'time', help = 'Aika minuutteina', type = 'number'}
-}})
+RegisterServerEvent( "esx_extendedjail:suggestions" )
+AddEventHandler( "esx_extendedjail:suggestions", function()
+	if source ~= 0 then
+		local xPlayer = ESX.GetPlayerFromId(source)
+		if xPlayer.job.name == Config.Job or xPlayer.getGroup() == Config.AdminTitle then
+			TriggerClientEvent("esx_extendedjail:suggestions", source)
+		end
+	end
+end)
 
-ESX.RegisterCommand('pjail', 'admin', function(xPlayer, args, showError)
-	JailPlayer(args.playerId, args.time, { jail = 'pjail', type = 'first', time = args.time})
-end, true, {help = 'Vangitse pelaaja', validate = true, arguments = {
-	{name = 'playerId', help = 'Pelaaja ID', type = 'playerId'},
-	{name = 'time', help = 'Aika minuutteina', type = 'number'}
-}})
+RegisterCommand("jail", function(source, args)
+	if source ~= 0 then
+		local xPlayer = ESX.GetPlayerFromId(source)
+		if xPlayer.job.name == Config.Job or xPlayer.getGroup() == Config.AdminTitle then
+			if args[1] and args[2] then
+				if GetPlayerName(args[1]) ~= nil then
+					JailPlayer(args[1], args[2], { jail = 'prison', type = 'first', time = args[2]}, xPlayer)
+				else
+					xPlayer.triggerEvent('chatMessage', "[ JAIL ]" , {255, 255, 255}, _U('error_noplayer'))
+				end
+			else
+				xPlayer.triggerEvent('chatMessage', "[ JAIL ]" , {255, 255, 255}, _U('error'))
+			end
+		end
+	end
+end)
 
-ESX.RegisterCommand('unjail', 'admin', function(xPlayer, args, showError)
-	UnJailPlayer(args.playerId, xPlayer)
-end, true, {help = 'Vangitse pelaaja', validate = true, arguments = {
-	{name = 'playerId', help = 'Pelaaja ID', type = 'playerId'}
-}})
+RegisterCommand("pjail", function(source, args)
+	if source ~= 0 then
+		local xPlayer = ESX.GetPlayerFromId(source)
+		if xPlayer.job.name == Config.Job or xPlayer.getGroup() == Config.AdminTitle then
+			if args[1] and args[2] then
+				if GetPlayerName(args[1]) ~= nil then
+					JailPlayer(args[1], args[2], { jail = 'pjail', type = 'first', time = args[2]}, xPlayer)
+				else
+					xPlayer.triggerEvent('chatMessage', "[ JAIL ]" , {255, 255, 255}, _U('error_noplayer'))
+				end
+			else
+				xPlayer.triggerEvent('chatMessage', "[ JAIL ]" , {255, 255, 255}, _U('error'))
+			end
+		end
+	end
+end)
+
+RegisterCommand("unjail", function(source, args)
+	if source ~= 0 then
+		local xPlayer = ESX.GetPlayerFromId(source)
+		if xPlayer.job.name == Config.Job or xPlayer.getGroup() == Config.AdminTitle then
+			if args[1] then
+				if GetPlayerName(args[1]) ~= nil then
+					UnJailPlayer(args[1], xPlayer)
+				else
+					xPlayer.triggerEvent('chatMessage', "[ JAIL ]" , {255, 255, 255}, _U('error_noplayer'))
+				end
+			else
+				xPlayer.triggerEvent('chatMessage', "[ JAIL ]" , {255, 255, 255}, _U('error'))
+			end
+		end
+	end
+end)
+
 
 RegisterNetEvent("esx_extendedjail:jailplayer_server")
 AddEventHandler( "esx_extendedjail:jailplayer_server", function(playeridss, timess, JailType)

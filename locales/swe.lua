@@ -26,5 +26,7 @@ Locales ['swe'] = {
   ['tried_unjail_error'] = 'Du kan inte släppa en person som redan är fri.',
   ['already_jailed_error'] = 'Den personen har redan arresterats.',
   ['already_started_error'] = 'Stölden är redan igång eller har nyligen försökt.',
-  ['failed_hacking_error'] = 'Du kunde inte komma in!'
+  ['failed_hacking_error'] = 'Du kunde inte komma in!',
+  ['error'] = 'Fel. Se till att du använde kommandot korrekt!',
+  ['error_noplayer'] = 'Error. There is no this player.'
 }

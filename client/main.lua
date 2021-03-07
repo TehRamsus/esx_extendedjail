@@ -8,6 +8,17 @@ Citizen.CreateThread(function()
 	end
 end)
 
+AddEventHandler("esx:onPlayerSpawn", function()
+    TriggerServerEvent("esx_extendedjail:suggestions")
+end)
+
+RegisterNetEvent("esx_extendedjail:suggestions")
+AddEventHandler("esx_extendedjail:suggestions", function()
+	TriggerEvent('chat:addSuggestion', '/jail', 'Jail player', {{ name="ID", help="Player ID"}, { name="Time", help="Time in minutes"}})
+	TriggerEvent('chat:addSuggestion', '/pjail', 'Jail player to police own jail', {{ name="ID", help="Player ID"}, { name="Time", help="Time in minutes"}})
+	TriggerEvent('chat:addSuggestion', '/unjail', 'Unjail player', {{ name="ID", help="Player ID"}})
+end)
+
 RegisterNetEvent("esx_extendedjail:jailplayer")
 AddEventHandler( "esx_extendedjail:jailplayer", function(_time, data)
 	Prisontimer = (_time * 60)
@@ -18,6 +29,7 @@ AddEventHandler( "esx_extendedjail:jailplayer", function(_time, data)
 		PJailPlayer(data)
 	end
 end)
+
 
 RegisterNetEvent("esx_extendedjail:unjailplayer")
 AddEventHandler( "esx_extendedjail:unjailplayer", function(JailType)

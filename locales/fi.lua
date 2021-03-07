@@ -26,5 +26,7 @@ Locales ['fi'] = {
   ['tried_unjail_error'] = 'Et voi vapauttaa henkilöä, joka on jo vapaana.',
   ['already_jailed_error'] = 'Kyseinen henkilö on jo vangittu.',
   ['already_started_error'] = 'Vapautus on jo käynnissä, tai sitä on yritetty äskettäin.',
-  ['failed_hacking_error'] = 'Epäonnistuit murtautumisessa!'
+  ['failed_hacking_error'] = 'Epäonnistuit murtautumisessa!',
+  ['error'] = 'Tapahtui virhe. Varmista, että käytit komentoa oikein!',
+  ['error_noplayer'] = 'Tapahtui virhe. Tätä pelaajaa ei ole palvelimella.'
 }
