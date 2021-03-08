@@ -115,8 +115,6 @@ end)
 
 function JailPlayer(playerId, time, data, source)
 	local xPlayerTarget = ESX.GetPlayerFromId(playerId)
-
-	if xPlayerTarget.job.name == Config.Job or xPlayerTarget.getGroup() == Config.AdminTitle then
 		if not PlayerArrested[playerId] then
 
 			if data.jail == 'prison' then
@@ -143,9 +141,6 @@ function JailPlayer(playerId, time, data, source)
 		else
 			(ESX.GetPlayerFromId(source.playerId)).showNotification(_U('already_jailed_error'))
 		end
-	else
-		(ESX.GetPlayerFromId(source.playerId)).triggerEvent('chatMessage', "[ JAIL ]" , {255, 255, 255}, _U('no_permissions'))
-		if Config.IsWebhookEnabled then Webhook("2061822", _U('alert'), _U('tried_without_permission', GetPlayerName(playerId), xPlayerTarget.getIdentifier())) end
 	end
 
 end
