@@ -40,18 +40,18 @@ Police Menu
 
 Example use on esx_policejob. Add labels under "Citizen_interaction" section
 ```lua
-				{label = _U('Jail'),            value = 'jail_menu'},
-				{label = _U('Pjail'), value = 'pjail_menu'}
+{label = _U('Jail'),            value = 'jail_menu'},
+{label = _U('Pjail'), value = 'pjail_menu'}
 ```
 
 And add these below to the citizen_interaction ESX Menu
 ```lua
-					if action == 'jail_menu' then
-						exports.esx_extendedjail:OpenJailMenu('prison')
+if action == 'jail_menu' then
+	exports.esx_extendedjail:OpenJailMenu('prison')
 
-					elseif action == 'pjail_menu' then
-						exports.esx_extendedjail:OpenJailMenu('pjail')
-					end
+elseif action == 'pjail_menu' then
+	exports.esx_extendedjail:OpenJailMenu('pjail')
+end
 ```
 
 *Please use your own brains. Don't ask everything, if something not works on the first time.*
