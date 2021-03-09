@@ -37,6 +37,7 @@ Permissions
 
 Police Menu
 - You can add jail functions to police menu. It's use normal export, so it's really easy to install. Please complain code below this on your own scripts.
+- Script rename is not needed, because then exports might not works.
 
 Example use on esx_policejob. Add labels under "Citizen_interaction" section
 ```lua
