@@ -32,6 +32,28 @@ Permissions
 
 ```diff
 - You don't have permissions to release script again, or leak it. 
+- You have to mention my name and github, if you use this script on your server.
 ```
+
+Police Menu
+- You can add jail functions to police menu. It's use normal export, so it's really easy to install. Please complain code below this on your own scripts.
+
+Example use on esx_policejob. Add labels under "Citizen_interaction" section
+```lua
+				{label = _U('Jail'),            value = 'jail_menu'},
+				{label = _U('Pjail'), value = 'pjail_menu'}
+```
+
+And add these below to the citizen_interaction ESX Menu
+```lua
+					if action == 'jail_menu' then
+						exports.esx_extendedjail:OpenJailMenu('prison')
+
+					elseif action == 'pjail_menu' then
+						exports.esx_extendedjail:OpenJailMenu('pjail')
+					end
+```
+
+*Please use your own brains. Don't ask everything, if something not works on the first time.*
 
 **• Owner: TehRamsus**

@@ -53,30 +53,3 @@ Config.Wear = {
 			['helmet_2'] = 0, 	['bags_1'] = -1
 		}
 }
-
---[[
-
-	If you want put this to the police job, check this function: OpenpoliceActionsMenu
-		Added all functions below after that OpenpoliceActionsMenu function. If you don't know how, check example how handcuffs is made...
-
-	{label = ('Jail'),            value = 'jail_menu'}
-
-	if data2.current.value == 'jail_menu' then
-		JailPlayer(GetPlayerServerId(closestPlayer))
-
-	function JailPlayer(player)
-	ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'jail_menu', {
-		title = _U('jail_menu_info'),
-	}, function (data2, menu)
-		local JailTime = tonumber(data2.value)
-		if JailTime == nil then
-			ESX.ShowNotification('Virheellinen aika')
-		else
-			TriggerServerEvent('esx_vankilapako:jailplayer_server', player, JailTime, 'prison')
-			menu.close()
-		end
-	end, function (data2, menu)
-		menu.close()
-	end)
-end
---]]

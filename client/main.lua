@@ -19,6 +19,26 @@ AddEventHandler("esx_extendedjail:suggestions", function()
 	TriggerEvent('chat:addSuggestion', '/unjail', 'Unjail player', {{ name="ID", help="Player ID"}})
 end)
 
+exports('OpenJailMenu', function(str)
+	ESX.UI.Menu.Open('dialog', GetCurrentResourceName(), 'jail_menu', {
+		title = ('Time'),
+	}, function (data2, menu)
+		local JailTime = tonumber(data2.value)
+		local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
+		if JailTime ~= nil then
+			if closestPlayer ~= -1 and closestDistance <= 3.0 then
+				TriggerServerEvent('esx_vankilapako:jailplayer_server', GetPlayerServerId(closestPlayer), JailTime, str)
+				menu.close()
+			end
+		else
+			ESX.ShowNotification('Virheellinen aika')
+		end
+	end, function (data2, menu)
+		menu.close()
+	end)
+end)
+
+
 RegisterNetEvent("esx_extendedjail:jailplayer")
 AddEventHandler( "esx_extendedjail:jailplayer", function(_time, data)
 	Prisontimer = (_time * 60)
