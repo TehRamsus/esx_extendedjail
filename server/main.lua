@@ -141,8 +141,6 @@ function JailPlayer(playerId, time, data, source)
 		else
 			(ESX.GetPlayerFromId(source.playerId)).showNotification(_U('already_jailed_error'))
 		end
-	end
-
 end
 
 function UnJailPlayer(playerId, source)
