@@ -18,8 +18,9 @@ RegisterCommand("jail", function(source, args)
 		local xPlayer = ESX.GetPlayerFromId(source)
 		if xPlayer.job.name == Config.Job or xPlayer.getGroup() == Config.AdminTitle then
 			if args[1] and args[2] then
+				local xPlayerTarget = ESX.GetPlayerFromId(args[1])
 				if GetPlayerName(args[1]) ~= nil then
-					JailPlayer(args[1], args[2], { jail = 'prison', type = 'first', time = args[2]}, xPlayer)
+					JailPlayer(xPlayerTarget.playerId, args[2], { jail = 'prison', type = 'first', time = args[2]}, xPlayer)
 				else
 					xPlayer.triggerEvent('chatMessage', "[ JAIL ]" , {255, 255, 255}, _U('error_noplayer'))
 				end
@@ -35,8 +36,9 @@ RegisterCommand("pjail", function(source, args)
 		local xPlayer = ESX.GetPlayerFromId(source)
 		if xPlayer.job.name == Config.Job or xPlayer.getGroup() == Config.AdminTitle then
 			if args[1] and args[2] then
+				local xPlayerTarget = ESX.GetPlayerFromId(args[1])
 				if GetPlayerName(args[1]) ~= nil then
-					JailPlayer(args[1], args[2], { jail = 'pjail', type = 'first', time = args[2]}, xPlayer)
+					JailPlayer(xPlayerTarget.playerId, args[2], { jail = 'pjail', type = 'first', time = args[2]}, xPlayer)
 				else
 					xPlayer.triggerEvent('chatMessage', "[ JAIL ]" , {255, 255, 255}, _U('error_noplayer'))
 				end
@@ -50,10 +52,12 @@ end)
 RegisterCommand("unjail", function(source, args)
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
+		print(source)
 		if xPlayer.job.name == Config.Job or xPlayer.getGroup() == Config.AdminTitle then
 			if args[1] then
+				local xPlayerTarget = ESX.GetPlayerFromId(args[1])
 				if GetPlayerName(args[1]) ~= nil then
-					UnJailPlayer(args[1], xPlayer)
+					UnJailPlayer(xPlayerTarget.playerId, xPlayer)
 				else
 					xPlayer.triggerEvent('chatMessage', "[ JAIL ]" , {255, 255, 255}, _U('error_noplayer'))
 				end
