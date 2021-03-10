@@ -52,7 +52,6 @@ end)
 RegisterCommand("unjail", function(source, args)
 	if source ~= 0 then
 		local xPlayer = ESX.GetPlayerFromId(source)
-		print(source)
 		if xPlayer.job.name == Config.Job or xPlayer.getGroup() == Config.AdminTitle then
 			if args[1] then
 				local xPlayerTarget = ESX.GetPlayerFromId(args[1])
