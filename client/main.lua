@@ -27,7 +27,7 @@ exports('OpenJailMenu', function(str)
 		local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
 		if JailTime ~= nil then
 			if closestPlayer ~= -1 and closestDistance <= 3.0 then
-				TriggerServerEvent('esx_vankilapako:jailplayer_server', GetPlayerServerId(closestPlayer), JailTime, str)
+				TriggerServerEvent('esx_extendedjail:jailplayer_server', GetPlayerServerId(closestPlayer), JailTime, str)
 				menu.close()
 			end
 		else
